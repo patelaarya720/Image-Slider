@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Image Slider</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#f3e8ff;
+text-align:center;
+}
+
+h2{
+color:#6d28d9;
+padding:20px;
+}
+
+.slider{
+width:90%;
+max-width:800px;
+margin:auto;
+position:relative;
+overflow:hidden;
+border-radius:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+.slide{
+display:none;
+width:100%;
+height:400px;
+object-fit:cover;
+}
+
+button{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.6);
+color:white;
+border:none;
+padding:12px 18px;
+font-size:24px;
+cursor:pointer;
+border-radius:8px;
+}
+
+.prev{left:10px;}
+.next{right:10px;}
+
+button:hover{
+background:#7c3aed;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Image Slider</h2>
+
+<div class="slider">
+
+<img class="slide" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80">
+
+<img class="slide" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80">
+
+<img class="slide" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80">
+<button class="prev" onclick="changeSlide(-1)">❮</button>
+<button class="next" onclick="changeSlide(1)">❯</button>
+
+</div>
+
+<script>
+let index = 0;
+showSlide(index);
+
+function showSlide(n){
+let slides = document.getElementsByClassName("slide");
+
+for(let i=0;i<slides.length;i++){
+slides[i].style.display="none";
+}
+
+slides[n].style.display="block";
+}
+
+function changeSlide(n){
+let slides = document.getElementsByClassName("slide");
+
+index = index + n;
+
+if(index >= slides.length){
+index = 0;
+}
+
+if(index < 0){
+index = slides.length - 1;
+}
+
+showSlide(index);
+}
+</script>
+
+</body>
+</html>
